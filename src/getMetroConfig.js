@@ -31,7 +31,7 @@ module.exports = symlinkedDependencies => {
             if (packageInfo.nativePeerDependencies) {
                 // Packages which are shared between React web and React Native
                 // can specify native peer dependencies.
-                peerDeps.concat(packageInfo.nativePeerDependencies;   
+                peerDeps.concat(packageInfo.nativePeerDependencies);   
             }
             return peerDeps;
         })
