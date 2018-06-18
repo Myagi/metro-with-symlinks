@@ -27,11 +27,11 @@ module.exports = symlinkedDependencies => {
     const peerDependenciesOfSymlinkedDependencies = symlinkedDependenciesPaths
         .map(path => {
             const packageInfo = require(`${path}/package.json`); 
-            const peerDeps = packageInfo.peerDependencies;
+            let peerDeps = packageInfo.peerDependencies;
             if (packageInfo.nativePeerDependencies) {
                 // Packages which are shared between React web and React Native
                 // can specify native peer dependencies.
-                peerDeps.concat(packageInfo.nativePeerDependencies);   
+                peerDeps = {...peerDeps, ...packageInfo.nativePeerDependencies};   
             }
             return peerDeps;
         })
